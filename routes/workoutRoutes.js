@@ -1,21 +1,22 @@
 const router = require('express').Router()
-const { Workouts } = require('../models')
+const { Workout } = require('../models')
 
 router.get('/workouts/:id', (req, res) => {
   Workout.findById(req.params.id)
-    .then(workout => res.json(workout))
+    .then(workouts => res.json(workouts))
     .catch(err => console.error(err))
 })
 
-// router.get('/users/un/:username', (req, res) => {
-//   User.find({ username: req.params.username })
-//     .then(users => res.json(users[0]))
-//     .catch(err => console.error(err))
-// })
+router.get('/workouts', (req, res) => {
+  Workout.find()
+    .then(workouts => res.json(workouts))
+    .catch(err => console.error(err))
+})
+
 
 router.post('/workouts', (req, res) => {
   Workout.create(req.body)
-    .then(workout => res.json(workout))
+    .then(workouts => res.json(workouts))
     .catch(err => console.error(err))
 })
 
