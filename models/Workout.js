@@ -36,7 +36,8 @@ const workoutSchema = new Schema({
   timestamps: true,
   toJSON: {
     virtuals: true
-  }
+  },
+  versionKey: false
 })
 
 workoutSchema.virtual('totalDuration').get(function () {
